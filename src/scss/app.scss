@@ -1,8 +1,9 @@
 $color : blue;
-$color2 : gray;
+$color2 : white;
 
 body{
   background-color: $color;
+  display: flex;
 }
 h1{
   color: $color2;
