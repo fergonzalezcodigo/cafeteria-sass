@@ -4,11 +4,10 @@ const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 
 const imagemin = require('gulp-imagemin');
-const webp = require('gulp-webp');
+const webp = require('gulp-webp')
 const avif = require('gulp-avif')
 
 function css(done){
-  //Compilar sass
   src('src/scss/app.scss')
     .pipe( sass() )
     .pipe( postcss( [ autoprefixer() ] ) )
@@ -24,10 +23,13 @@ function imagenes (done){
     done();
 }
 
-function versionWebp(){
+function webpImages(){
+  const opciones = {
+    quality: 50
+  }
   return src('src/img/**/*.{png,jpg}')
-    .pipe( webp() )
-    .pipe(dest('build/img'));
+    .pipe( webp( opciones ) )
+    .pipe(dest('build/img'))
 }
 
 function versionAvif(){
@@ -41,16 +43,15 @@ function versionAvif(){
 
 function dev(){
   watch( 'src/scss/**/*.scss', css);
-  //watch('src/scss/app.scss', css);
   watch( 'src/img/**/*', imagenes );
 }
 
 exports.css = css;
 exports.dev = dev;
 exports.imagenes = imagenes;
-exports.versionWebp = versionWebp
 exports.versionAvif = versionAvif;
-exports.default = series ( imagenes, versionWebp, versionAvif, css, dev )
+exports.webpImages = webpImages;
+exports.default = series ( imagenes, webpImages, versionAvif, css, dev )
 
 //series - Se inicia una tarea y hasta que finaliza inicia la siguiente
 // parallel - Todas inician al mismo tiempo

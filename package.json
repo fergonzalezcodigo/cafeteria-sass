@@ -22,5 +22,8 @@
   "browsersList": [
     "last 1 version",
     "> 1%"
-  ]
+  ],
+  "dependencies": {
+    "webp-converter": "^2.3.3"
+  }
 }
