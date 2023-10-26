@@ -330,7 +330,7 @@ p {
 .contenedor {
   width: 95%;
   max-width: 120rem;
-  margin: 0 auti;
+  margin: 0 auto;
 }
 
 a {
@@ -364,4 +364,48 @@ h3 {
 
 .bg-primario {
   background-color: #E8505B;
+}
+
+.barra {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 768px) {
+  .barra {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.barra .logo {
+  width: 50%;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .barra .logo {
+    width: 20rem;
+    margin: 0;
+  }
+}
+
+.header {
+  padding: 5rem 0;
+  position: relative;
+}
+.header::before {
+  content: "";
+  background-color: #000000;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.6;
+}
+.header .contenido-header {
+  position: relative;
+}
+
+.header-inicio {
+  background-image: url(../img/header_inicio.jpg);
 }
